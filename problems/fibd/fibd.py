@@ -1,22 +1,19 @@
-# I get a lot of "maximum recursion depth" problems here. Help!
+# Shamelessly taken from a StackExchange answer. This was totally out of my league...
 
 import sys
 
-def fib(n, m):
+n = int(sys.argv[1])
+m = int(sys.argv[2])
 
-	if m != 1:
+def mortal_fib(n, m):
 
-		if n == 1:
-			return 1
-		elif n == 2:
-			return 1
-		elif n == 3:
-			return 2
-		else:
-			return fib(n-m, m) + fib(n-(m-1), m)
+	f = [0]*(n+1)
 
-	else:
-		return 1
+	f[0] = 1
 
+	for i in range(2, n+1):
+		f[i] = f[i-2] + f[i-1] - f[i - m - 1]
 
-print fib(int(sys.argv[1]), int(sys.argv[2]))
+	return f[n] + f[n-1]
+
+print mortal_fib(n, m)
