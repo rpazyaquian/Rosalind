@@ -1,10 +1,6 @@
-# Not finished yet.
-
 import sys
 
 file = open(sys.argv[1], 'r')
-
-output = open('output.txt', 'a')
 
 def build_sequence_list(f):
 
@@ -36,15 +32,3 @@ def build_sequence_list(f):
 
 	return associated_list
 
-sequence_list = build_sequence_list(file)
-
-print len(sequence_list)
-print len(sequence_list)**2
-
-output_list = []
-
-for i in sequence_list:
-    for j in sequence_list:
-        if i[0] != j[0]:
-			if i[1][:3] == j[1][-3:]:
-				output.write('{0} {1}\n'.format(j[0][1:], i[0][1:]))
